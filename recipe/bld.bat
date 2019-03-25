@@ -13,7 +13,8 @@ if errorlevel 1 exit 1
     link=static,shared ^
     -j%CPU_COUNT% ^
     --layout=system ^
-    --without-python
+    --without-python ^
+    debug-symbols=on
 if errorlevel 1 exit 1
 
 :: Remove Python headers as we don't build Boost.Python.
@@ -27,4 +28,3 @@ if errorlevel 1 exit 1
 :: Set BOOST_AUTO_LINK_NOMANGLE so that auto-linking uses system layout
 echo &echo.                           >> %LIBRARY_INC%\boost\config\user.hpp
 echo #define BOOST_AUTO_LINK_NOMANGLE >> %LIBRARY_INC%\boost\config\user.hpp
-
